@@ -18,6 +18,7 @@ public class GhostActivity extends AppCompatActivity {
     private static final String COMPUTER_TURN = "Computer's turn";
     private static final String USER_TURN = "Your turn";
     private GhostDictionary dictionary;
+    private SimpleDictionary slowDictionary;
     private boolean userTurn = false;
     private Random random = new Random();
 
@@ -29,6 +30,7 @@ public class GhostActivity extends AppCompatActivity {
         try {
             InputStream inputStream = assetManager.open("words.txt");
             dictionary = new FastDictionary(inputStream);
+            slowDictionary = new SimpleDictionary(inputStream);
         } catch (IOException e) {
             Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
             toast.show();
